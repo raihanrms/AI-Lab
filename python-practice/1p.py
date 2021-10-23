@@ -30,5 +30,3 @@ elif age == max_age:
     print ("Nope")
 else:
     print("Hurry up then")
-
-# functions
