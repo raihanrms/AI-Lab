@@ -19,3 +19,16 @@ Tom_age = 3
 Age_req = 5
 
 print(Tom_age == Age_req)
+
+# if-statements and else if's
+age = 29
+max_age = 30
+
+if age < max_age:
+    print("You're still good")
+elif age == max_age:
+    print ("Nope")
+else:
+    print("Hurry up then")
+
+# functions
