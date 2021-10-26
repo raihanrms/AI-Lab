@@ -23,3 +23,9 @@ def age_cal(age,name):
 age_cal(3,"He")
 
 # getting parameter back from a function
+def add_age(sent_age):
+    new_age = sent_age + 10
+    return new_age
+
+how_old_will_i_be = add_age(3)
+print(how_old_will_i_be)
