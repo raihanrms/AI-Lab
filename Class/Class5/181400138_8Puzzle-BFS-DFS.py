@@ -4,45 +4,46 @@
 
 # 8 Puzzle using BFS and DFS
 
-#!/usr/bin/python
+# Where 0 denotes the blank tile or space.
 goal_state = [5, 7, 4, 3, 0, 1, 6, 2, 8]
+# goal_state = [1, 4, 6, 2, 0, 7, 3, 5, 8]
 starting_state = [3, 5, 4, 7, 1, 0, 6, 2, 8]
 
+### Code begins.
 import sys
 
 def display_board( state ):
-	print ("-------------")
-	print ("| %i | %i | %i |") % (state[0], state[3], state[6])
-	print ("-------------")
-	print ("| %i | %i | %i |") % (state[1], state[4], state[7])
-	print ("-------------")
-	print ("| %i | %i | %i |") % (state[2], state[5], state[8])
-	print ("-------------")
+	print("-------------")
+	print("| %i | %i | %i |" % (state[0], state[3], state[6]))
+	print("-------------")
+	print("| %i | %i | %i |" % (state[1], state[4], state[7]))
+	print("-------------")
+	print("| %i | %i | %i |" % (state[2], state[5], state[8]))
+	print("-------------")
 	
 def move_up( state ):
 	# Moves the blank tile up on the board. Returns a new state as a list.
-	
 	new_state = state[:]
 	index = new_state.index( 0 )  #this will return index of blank
 	
 	if index not in [0, 3, 6]:
-		# Swapping the values.
+		# Swap the values.
 		temp = new_state[index - 1]
 		new_state[index - 1] = new_state[index]
 		new_state[index] = temp
 		return new_state
 	else:
-		# Can't move, return None (Pythons NULL)
+		# Can't move, return None 
 		return None
 
 def move_down( state ):
 	# Moves the blank tile down on the board. Returns a new state as a list.
-	# Perform object copy
+
 	new_state = state[:]
 	index = new_state.index( 0 )
 	
 	if index not in [2, 5, 8]:
-		# Swapping the values.
+		# Swap the values.
 		temp = new_state[index + 1]
 		new_state[index + 1] = new_state[index]
 		new_state[index] = temp
@@ -57,7 +58,7 @@ def move_left( state ):
 	index = new_state.index( 0 )
 	
 	if index not in [0, 1, 2]:
-		# Swapping the values.
+		# Swap the values.
 		temp = new_state[index - 3]
 		new_state[index - 3] = new_state[index]
 		new_state[index] = temp
@@ -73,7 +74,7 @@ def move_right( state ):
 	index = new_state.index( 0 )
 	
 	if index not in [6, 7, 8]:
-		# Swapping the values.
+		# Swap the values.
 		temp = new_state[index + 3]
 		new_state[index + 3] = new_state[index]
 		new_state[index] = temp
@@ -86,7 +87,7 @@ def create_node( state, parent, operator, depth,cost):
 	return Node( state, parent, operator, depth,cost)
 
 def expand_node( node,open_nodes,close_nodes):
-	# Returns a list of expanded nodes
+	# Returns a list of expanded nodes.
 	expanded_nodes = []
 	
 	expanded_nodes.append( create_node( move_up( node.state ), node, "u", node.depth + 1,0) )
@@ -104,12 +105,11 @@ def expand_node( node,open_nodes,close_nodes):
 	for c in close_nodes:
 		close_state.append(c.state)	
 	
-	# Remove repeated nodes
-	# Remove the nodes that are in open list
+	#Remove repeated nodes
+	#Remove the nodes that are in open list
 	expanded_nodes = [node for node in expanded_nodes if node.state not in open_state]
-	# Remove the nodes that are in close list
+	#Remove the nodes that are in close list
 	expanded_nodes = [node for node in expanded_nodes if node.state not in close_state]
-
 	return expanded_nodes
 
 def solution_path(node):
@@ -126,7 +126,7 @@ def solution_path(node):
 
 def bfs( start, goal ):
 	# Performs a breadth first search from the start state to the goal
-	# A list (can act as a queue) for the nodes.
+	# A list can act as a queue for the nodes.
 	open_nodes = []
 	close_nodes = []
 	# Create the queue with the root node in it.
@@ -146,6 +146,7 @@ def bfs( start, goal ):
 		# Expand the node and add all the expansions to end of the queue
 		open_nodes.extend( expand_node( node, open_nodes,close_nodes) )
 		
+
 def dfs( start, goal,depth = 10):
 	# Performs a depth first search from the start state to the goal.
 	# A list can act as a stack too for the nodes.
@@ -170,7 +171,7 @@ def dfs( start, goal,depth = 10):
 			expanded_nodes = expand_node( node, open_nodes,close_nodes )
 			if len(expanded_nodes) != 0:
 				expanded_nodes.extend(open_nodes )
-				open_nodes = expanded_nodes
+				open_nodes = expanded_nodes		
 
 # Node data structure
 class Node:
@@ -188,16 +189,15 @@ class Node:
 		
 # Main method
 def main():
-	### CHANGE THIS FUNCTION TO USE bfs, dfs
-	result,states = bfs( starting_state, goal_state,10 )
-	# result,states = dfs( starting_state, goal_state,10 )
+	### change this to bfs, dfs
+	result,states = dfs( starting_state, goal_state )
 	if result == None:
-		print ("No solution found")
+		print("No solution found")
 	elif result == [None]:
-		print ("Start node was the goal!")
+		print("Start node was the goal!")
 	else:
 		print (result)
-		print (len(result)), " moves"
+		print (len(result), "moves")
 		
 		#To display board content
 		for state in states:
