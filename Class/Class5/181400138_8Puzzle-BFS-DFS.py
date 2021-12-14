@@ -171,7 +171,75 @@ def dfs( start, goal,depth = 10):
 			expanded_nodes = expand_node( node, open_nodes,close_nodes )
 			if len(expanded_nodes) != 0:
 				expanded_nodes.extend(open_nodes )
-				open_nodes = expanded_nodes		
+				open_nodes = expanded_nodes
+
+# Commented out, not implemented yet
+# def a_star( start, goal ):
+# 	# Performs an A* Heuristic search
+# 	open_nodes = []
+# 	close_nodes = []
+# 	open_nodes.append( create_node( start, None, None, 0, 0 ) )
+# 	g = 0
+# 	h = g(start,goal)
+# 	while True:
+# 		# Out of states, no solution
+# 		if len( open_nodes ) == 0: return None
+
+# 		# Sort the nodes with custom compare funcion
+# 		open_nodes.sort( cmp1 )
+# 		# taking the node from the front of the queue
+# 		best_node = open_nodes.pop(0)
+# 		if best_node.state == goal:
+# 			return solution_path(best_node)
+
+# 			# generating sucessor node
+# 		successor_nodes = expand_node(best_node,[],[])
+# 		for succ in successor_nodes:
+# 			#g(successor) = g(best_node) + cost of getting successor node from best node
+# 				succ.cost =  best_node.cost + (succ.depth - best_node.depth) 
+
+# 			#if successor is a goal node then return the moves
+# 				if succ.state == goal:
+# 					return solution_path(succ)
+
+# 				#if already generated node but not processed i.e. node in open list but has lower cost than old in open update old
+# 				elif succ.state in open_nodes:
+# 					old = [o for o in open_nodes if o.state == succ.state][0]
+# 					succ_f = succ.cost + h(succ,goal)  # f value of successor
+# 					old_f = old.cost + h(old,goal)  #f value of old
+# 					if succ_f < old_f: #update open list successor duplicate with succ value
+# 						old.parent = best_node
+# 						old.cost = succ.cost
+# 						#otherwise ignore successor
+
+# 				#if successor is already processed but has lower cost than old node, add in open list
+# 				elif succ.state in close_nodes:
+# 					old = [c for c in close_nodes if c.state == succ.state][0]
+# 					succ_f = succ.cost + h(succ,goal) #f value of successor
+# 					old_f = old.cost + h(old,goal) #f value of old
+# 					if succ_f < old_f: #update open list successor duplicate with succ value
+# 						open_nodes.append(succ)
+# 						#otherwise ignore successor
+
+# 		#if node neither in open nor in close list add succ in open list
+# 					else:
+# 						open_nodes.append(succ)
+# 		close_nodes.append(best_node)
+
+
+# def cmp1( x, y ):
+# 	# Compare function for A*. f(n) = g(n) + h(n). I have used depth (number of moves) for g().
+# 	return (x.depth + h( x.state, goal_state )) - (y.depth + h( x.state, goal_state ))
+
+# def cmp2( x, y):
+# 	# Compare function for Hill Climbing and Best First Search i.e h(n).
+# 	return (h( x.state, goal_state ) -  h( x.state, goal_state ))	
+
+# def h( state, goal ):
+# 	"""Heuristic for the A* search. Returns an integer based on out of place tiles"""
+# 	score = 0
+
+
 
 # Node data structure
 class Node:
@@ -189,8 +257,8 @@ class Node:
 		
 # Main method
 def main():
-	### change this to bfs, dfs
-	result,states = dfs( starting_state, goal_state )
+	### change this to bfs, dfs, A*(a_star)
+	result,states = bfs( starting_state, goal_state )
 	if result == None:
 		print("No solution found")
 	elif result == [None]:
