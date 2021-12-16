@@ -13,13 +13,13 @@ starting_state = [3, 5, 4, 7, 1, 0, 6, 2, 8]
 import sys
 
 def display_board( state ):
-	print("-------------")
+	print("*************")
 	print("| %i | %i | %i |" % (state[0], state[3], state[6]))
-	print("-------------")
+	print("*************")
 	print("| %i | %i | %i |" % (state[1], state[4], state[7]))
-	print("-------------")
+	print("*************")
 	print("| %i | %i | %i |" % (state[2], state[5], state[8]))
-	print("-------------")
+	print("*************")
 	
 def move_up( state ):
 	# Moves the blank tile up on the board. Returns a new state as a list.
@@ -279,23 +279,23 @@ if __name__ == "__main__":
 # The state of the board is stored in a list. The list stores values for the
 # board in the following positions:
 #
-# -------------
+# *************
 # | 3 | 7 | 6 |
-# -------------
+# *************
 # | 5 | 1 | 2 |
-# -------------
+# *************
 # | 4 | 0 | 8 |
-# -------------
+# *************
 #
 # The goal is defined as:
 #
-# -------------
+# *************
 # | 5 | 3 | 6 |
-# -------------
+# *************
 # | 7 | 0 | 2 |
-# -------------
+# *************
 # | 4 | 1 | 8 |
-# -------------
+# *************
 #
 # Where 0 denotes the blank tile or space.
 """
