@@ -4,12 +4,11 @@
 
 # 8 Puzzle using BFS
 
-# Where 0 denotes the blank tile or space.
+# Where 0 is the blank tile or space.
 goal_state = [5, 7, 4, 3, 0, 1, 6, 2, 8]
 # goal_state = [1, 4, 6, 2, 0, 7, 3, 5, 8]
 starting_state = [3, 5, 4, 7, 1, 0, 6, 2, 8]
 
-### Code begins.
 import sys
 
 def display_board( state ):

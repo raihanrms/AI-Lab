@@ -1,0 +1,7 @@
+https://pythonspot.com/k-nearest-neighbors/
+
+https://plotly.com/python/knn-classification/
+
+https://stackabuse.com/k-nearest-neighbors-algorithm-in-python-and-scikit-learn/
+
+https://scikit-learn.org/stable/auto_examples/neighbors/plot_classification.html
