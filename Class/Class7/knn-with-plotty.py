@@ -8,6 +8,7 @@ mesh_size = .02
 margin = 0.25
 
 # Load and split data
+
 X, y = make_moons(noise=0.3, random_state=0)
 X_train, X_test, y_train, y_test = train_test_split(
     X, y.astype(str), test_size=0.25, random_state=0)
@@ -41,8 +42,8 @@ fig = go.Figure(data=[
     for X, y, label, split, marker in trace_specs
 ])
 fig.update_traces(
-    marker_size=12, marker_line_width=1.5,
-    marker_color="darkgreen"
+    marker_size=10, marker_line_width=1.5,
+    marker_color="lightseagreen"
 )
 
 fig.add_trace(
