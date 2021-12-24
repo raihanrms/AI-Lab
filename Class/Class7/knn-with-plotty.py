@@ -53,7 +53,7 @@ fig.add_trace(
         z=Z,
         showscale=False,
         colorscale='RdBu',
-        opacity=0.4,
+        opacity=0.3,
         name='Score',
         hoverinfo='skip'
     )
