@@ -1,17 +1,41 @@
 import plotly.graph_objects as go
 import numpy as np
-from sklearn.datasets import make_moons
+from sklearn.datasets import make_moons, make_s_curve
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 
 mesh_size = .02
-margin = 0.25
+margin = 0.5
 
 # Load and split data
 
+# Load the data from user input
+# XR = int(input("Enter the number of rows for X:"))
+# XC = int(input("Enter the number of columns for X:"))
+
+# X = []
+# print("Enter the values for X: ")
+# for i in range(XR):
+#     a = []
+#     for j in range(XC):
+#         a.append(int(input()))
+#     X.append(a)
+
+
+# YR = int(input("Enter the number of rows for y: "))
+# YC = int(input("Enter the number of columns for y: "))
+
+# y = []
+# print("Enter the values for y: ")
+# for i in range(YR):
+#     b = []
+#     for j in range(YC):
+#         b.append(int(input()))
+#     y.append(b)
+
 X, y = make_moons(noise=0.3, random_state=0)
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y.astype(str), test_size=0.25, random_state=0)
+    X, y.astype(str), test_size=0.3, random_state=0)
 
 # Create a mesh grid on which we will run our model
 x_min, x_max = X[:, 0].min() - margin, X[:, 0].max() + margin
@@ -43,7 +67,7 @@ fig = go.Figure(data=[
 ])
 fig.update_traces(
     marker_size=10, marker_line_width=1.5,
-    marker_color="lightseagreen"
+    marker_color="black"
 )
 
 fig.add_trace(
@@ -53,9 +77,11 @@ fig.add_trace(
         z=Z,
         showscale=False,
         colorscale='RdBu',
-        opacity=0.3,
+        opacity=0.5,
         name='Score',
-        hoverinfo='skip'
+        hoverinfo='all'
     )
 )
 fig.show()
+
+print(X)
